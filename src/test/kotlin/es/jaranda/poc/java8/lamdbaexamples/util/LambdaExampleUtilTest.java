@@ -44,7 +44,6 @@ public class LambdaExampleUtilTest {
     public void givenListOfStudentsWhenCallObtainAllSubjectThenRecieveAllSubjectsFromMinorOf25() {
 
         // Given
-
         final List<Student> students = Arrays.asList(
                 STUDENT_MICHAEL, STUDENT_JOHN, STUDENT_HELLEN
         );
@@ -55,9 +54,17 @@ public class LambdaExampleUtilTest {
                         obtainAllSubjectsFromStudentsMinorOf25(students);
 
         // Then
-        assertTrue(subjects.contains(SUBJECT_COMPUTING_SCIENE));
-        assertTrue(subjects.contains(SUBJECT_MATHS));
-        assertFalse(subjects.contains(SUBJECT_HISTORY));
+        assertTrue("Should contains 'Computer Sciene'",
+                subjects.contains(SUBJECT_COMPUTING_SCIENE));
+        assertTrue("Should contains 'Maths'",
+                subjects.contains(SUBJECT_MATHS));
+        assertFalse("Should not contains 'History'), ",
+                subjects.contains(SUBJECT_HISTORY));
+
+        assertTrue("'Computer Science' should be unique",
+                isUnique(subjects, SUBJECT_COMPUTING_SCIENE));
+        assertTrue("'Maths' should be unique",
+                isUnique(subjects, SUBJECT_MATHS));
 
     }
 
@@ -79,6 +86,10 @@ public class LambdaExampleUtilTest {
         // Then
         assertTrue("Subject list is not empty", subjects.isEmpty());
 
+    }
+
+    private <T> boolean isUnique(final List<T> items, final T item) {
+        return items.stream().filter(x -> x == item).count() == 1;
     }
 
 }
