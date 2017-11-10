@@ -17,7 +17,7 @@ public class LambdaExampleUtil {
             final List<Student> students) {
 
         return students.stream()
-                .filter( student -> student.getAge() < 25)
+                .filter( student -> student.getAge() < MAX_AGE)
                 .flatMap(student -> student.getProfessors().stream())
                 .map(Professor::getSubject)
                 .distinct()
