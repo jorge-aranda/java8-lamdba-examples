@@ -19,7 +19,7 @@ apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
 
 group = 'es.jaranda.poc'
-version = '0.0.1-SNAPSHOT'
+version = '0.1.0.RELEASE'
 sourceCompatibility = 1.8
 compileKotlin {
     kotlinOptions.jvmTarget = "1.8"
